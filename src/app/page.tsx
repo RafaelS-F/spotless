@@ -1,95 +1,168 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Head from 'next/head';
+import styles from '../app/components/page.module.css';
+import "./globals.css";
+import { Belleza } from 'next/font/google';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <Head>
+        <title>Minha Página Home</title>
+        <meta name="description" content="Página home com várias seções" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+      <main>
+        <section id="secao1" className={`${styles.section} ${styles.section1}`}>
+          <div>
+            <h1 style={{ fontSize: '3rem' }}>
+              Aproveite seu dia<br />
+              e deixe a limpeza<br />
+              com a gente.
+            </h1>
+            <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>
+              Conectamos você aos melhores profissionais de limpeza residencial.
+            </p>
+            <div style={{ display: 'flex', gap: '20px', marginTop: '30px' }}>
+              <button className={styles.button}>Saiba mais</button>
+              <button className={styles.button}>Agendar agora</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="secao2" className={`${styles.section2}`}>
+          <div className={styles.row1}>
+            <h1 style={{ fontSize: '3em' }}>Encontre diaristas qualificadas<br /> para limpeza de sua casa.</h1>
+          </div>
+          <div className={styles.row2}>
+            <div className={styles.columnSecao2}>
+              <div className={styles.imageRow}>
+                <img src="imagem1.jfif" alt="Limpeza Padrão" className={styles.image} />
+              </div>
+              <div className={styles.tituloRow}>
+                <h1>Limpeza Padrão</h1>
+              </div>
+              <div className={styles.descriptionRow}>
+                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+              </div>
+              <div className={styles.valueRow}>
+                <p>R$ 100,00</p>
+              </div>
+              <div className={styles.buttonRow}>
+                <button className={styles.button}>Agende</button>
+              </div>
+            </div>
+
+            <div className={styles.columnSecao2}>
+              <div className={styles.imageRow}>
+                <img src="/imagem2.jfif" alt="Limpeza Padrão" className={styles.image} />
+              </div>
+              <div className={styles.tituloRow}>
+                <h1>Limpeza Padrão</h1>
+              </div>
+              <div className={styles.descriptionRow}>
+                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+              </div>
+              <div className={styles.valueRow}>
+                <p>R$ 100,00</p>
+              </div>
+              <div className={styles.buttonRow}>
+                <button className={styles.button}>Agende</button>
+              </div>
+            </div>
+
+            <div className={styles.columnSecao2}>
+              <div className={styles.imageRow}>
+                <img src="/imagem3.webp" alt="Limpeza Padrão" className={styles.image} />
+              </div>
+              <div className={styles.tituloRow}>
+                <h1>Limpeza Padrão</h1>
+              </div>
+              <div className={styles.descriptionRow}>
+                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+              </div>
+              <div className={styles.valueRow}>
+                <p>R$ 100,00</p>
+              </div>
+              <div className={styles.buttonRow}>
+                <button className={styles.button}>Agende</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="secao3" className={`${styles.section} ${styles.section3}`}>
+          <div className={styles.containerSecao3}>
+            <div className={styles.imageContainerSecao3}>
+              <img src="/secao3.jpg" alt="Imagem da Seção 3" className={styles.imageSecao3} />
+            </div>
+            <div className={styles.textContainerSecao3}>
+              <h1>Sobre Nós</h1>
+              <p>
+                Bem-vindo ao nosso site! Somos especializados em conectar você a diaristas qualificadas para
+                todos os tipos de limpeza residencial. Seja uma limpeza padrão, pesada ou concentrada, nossa
+                equipe está pronta para deixar sua casa impecável. Agende agora e aproveite seu dia enquanto
+                cuidamos da limpeza para você.
+                
+              </p>
+              <button className={styles.button}>Agende</button>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="secao4" className={`${styles.section} ${styles.section4}`}>
+          <h1 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '40px', color: '#ffffff' }}>
+            O que nossos clientes dizem
+          </h1>
+          <div className={styles.depoimentosContainer}>
+            <div className={styles.depoimento}>
+              <img src="/cliente1.jpg" alt="Cliente 1" className={styles.depoimentoImagem} />
+              <h3>Maria Silva</h3>
+              <p>"Ótimo serviço! Minha casa ficou impecável."</p>
+              <div className={styles.estrelas}>★★★★★</div>
+            </div>
+            <div className={styles.depoimento}>
+              <img src="/cliente2.jpg" alt="Cliente 2" className={styles.depoimentoImagem} />
+              <h3>João Santos</h3>
+              <p>"Profissionais muito competentes e atenciosos."</p>
+              <div className={styles.estrelas}>★★★★☆</div>
+            </div>
+            <div className={styles.depoimento}>
+              <img src="/cliente3.jpg" alt="Cliente 3" className={styles.depoimentoImagem} />
+              <h3>Ana Oliveira</h3>
+              <p>"Adorei a praticidade e a qualidade do serviço."</p>
+              <div className={styles.estrelas}>★★★★★</div>
+            </div>
+          </div>
+        </section>
+        <section id="secao5" className={`${styles.section} ${styles.section5}`}>
+          <div className={styles.footerContainer}>
+            <div className={styles.footerColuna}>
+              <h3>Sobre Nós</h3>
+              <p>Conectamos você aos melhores profissionais de limpeza residencial.</p>
+            </div>
+            <div className={styles.footerColuna}>
+              <h3>Links Rápidos</h3>
+              <ul>
+                <li><a href="#secao1">Home</a></li>
+                <li><a href="#secao2">Serviços</a></li>
+                <li><a href="#secao3">Sobre</a></li>
+                <li><a href="#secao4">Depoimentos</a></li>
+              </ul>
+            </div>
+            <div className={styles.footerColuna}>
+              <h3>Contato</h3>
+              <p>Telefone: (11) 1234-5678</p>
+              <p>E-mail: contato@limpezafacil.com</p>
+              <p>Endereço: Rua Exemplo, 123 - São Paulo, SP</p>
+            </div>
+          </div>
+          <div className={styles.footerDireitos}>
+            <p>&copy; 2023 Limpeza Fácil. Todos os direitos reservados.</p>
+          </div>
+        </section>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
