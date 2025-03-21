@@ -14,6 +14,9 @@ export default function Home() {
 
       <main>
         <section id="secao1" className={`${styles.section} ${styles.section1}`}>
+        <div className={styles.logoContainer}>
+          <img src="/logo1.png" alt="Logo do Site" className={styles.logo} />
+        </div>
           <div>
             <h1 style={{ fontSize: '3rem' }}>
               Aproveite seu dia<br />
@@ -37,13 +40,13 @@ export default function Home() {
           <div className={styles.row2}>
             <div className={styles.columnSecao2}>
               <div className={styles.imageRow}>
-                <img src="imagem1.jfif" alt="Limpeza Padrão" className={styles.image} />
+                <img src="imagem2.jfif" alt="Limpeza Padrão" className={styles.image} />
               </div>
               <div className={styles.tituloRow}>
                 <h1>Limpeza Padrão</h1>
               </div>
               <div className={styles.descriptionRow}>
-                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+                <p>Limpeza do dia a dia, focada em manter a ordem e higiene básica, como varrer, passar pano e limpar superfícies.</p>
               </div>
               <div className={styles.valueRow}>
                 <p>R$ 100,00</p>
@@ -55,13 +58,13 @@ export default function Home() {
 
             <div className={styles.columnSecao2}>
               <div className={styles.imageRow}>
-                <img src="/imagem2.jfif" alt="Limpeza Padrão" className={styles.image} />
+                <img src="/imagem1.jfif" alt="Limpeza Padrão" className={styles.image} />
               </div>
               <div className={styles.tituloRow}>
-                <h1>Limpeza Padrão</h1>
+                <h1>Limpeza Pesada</h1>
               </div>
               <div className={styles.descriptionRow}>
-                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+                <p>Limpeza mais detalhada, incluindo tarefas como lavar cortinas, limpar áreas de difícil acesso e higienizar estofados.</p>
               </div>
               <div className={styles.valueRow}>
                 <p>R$ 100,00</p>
@@ -73,13 +76,13 @@ export default function Home() {
 
             <div className={styles.columnSecao2}>
               <div className={styles.imageRow}>
-                <img src="/imagem3.webp" alt="Limpeza Padrão" className={styles.image} />
+                <img src="/imagem3.jpeg" alt="Limpeza Padrão" className={styles.image} />
               </div>
               <div className={styles.tituloRow}>
-                <h1>Limpeza Padrão</h1>
+                <h1>Limpeza Individual</h1>
               </div>
               <div className={styles.descriptionRow}>
-                <p>Limpeza geral da casa, incluindo aspiração, pó e limpeza de superfícies.</p>
+                <p>Limpeza focada em algo específico, como janelas, cortinas, estantes, banheiros, quartos, entre outros.</p>
               </div>
               <div className={styles.valueRow}>
                 <p>R$ 100,00</p>
@@ -111,25 +114,51 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="secao3-5" className={`${styles.section} ${styles.section3_5}`}>
+          <div className={styles.containerSecao3_5}>
+            <h1 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '40px', color: '#333' }}>
+              Vantagens que você só encontra no Spotless
+            </h1>
+            <div className={styles.vantagensContainer}>
+              <div className={styles.vantagem}>
+                <h2>Praticidade</h2>
+                <p>Agende seu serviço em poucos cliques e tenha tudo resolvido de forma rápida e eficiente.</p>
+              </div>
+              <div className={styles.vantagem}>
+                <h2>Segurança</h2>
+                <p>Profissionais verificados e avaliados para garantir a sua tranquilidade.</p>
+              </div>
+              <div className={styles.vantagem}>
+                <h2>Qualidade</h2>
+                <p>Diárias com excelente avaliação, garantindo um serviço de alta qualidade.</p>
+              </div>
+              <div className={styles.vantagem}>
+                <h2>Preço Justo</h2>
+                <p>Pagamento transparente, sem taxas escondidas e de acordo com o serviço prestado.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="secao4" className={`${styles.section} ${styles.section4}`}>
           <h1 style={{ textAlign: 'center', fontSize: '2.5rem', marginBottom: '40px', color: '#ffffff' }}>
             O que nossos clientes dizem
           </h1>
           <div className={styles.depoimentosContainer}>
-            <div className={styles.depoimento}>
-              <img src="/cliente1.jpg" alt="Cliente 1" className={styles.depoimentoImagem} />
+            <div className={styles.depoimento}> 
+              <img src="/pf1.jpeg" alt="Cliente 1" className={styles.depoimentoImagem} />
               <h3>Maria Silva</h3>
               <p>"Ótimo serviço! Minha casa ficou impecável."</p>
               <div className={styles.estrelas}>★★★★★</div>
             </div>
             <div className={styles.depoimento}>
-              <img src="/cliente2.jpg" alt="Cliente 2" className={styles.depoimentoImagem} />
+              <img src="/pf2.jpeg" alt="Cliente 2" className={styles.depoimentoImagem} />
               <h3>João Santos</h3>
               <p>"Profissionais muito competentes e atenciosos."</p>
               <div className={styles.estrelas}>★★★★☆</div>
             </div>
             <div className={styles.depoimento}>
-              <img src="/cliente3.jpg" alt="Cliente 3" className={styles.depoimentoImagem} />
+              <img src="/pf3.jpg" alt="Cliente 3" className={styles.depoimentoImagem} />
               <h3>Ana Oliveira</h3>
               <p>"Adorei a praticidade e a qualidade do serviço."</p>
               <div className={styles.estrelas}>★★★★★</div>
