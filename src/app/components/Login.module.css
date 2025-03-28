@@ -1,0 +1,72 @@
+.bgImageVertical {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
+}
+
+.hCustom2 {
+  height: 100%;
+}
+
+.formContainer {
+  width: 23rem;
+}
+
+.formOutline {
+  margin-bottom: 1rem;
+}
+
+.formControlLg {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+.formLabel {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.btnInfo {
+  width: 100%;
+  padding: 1rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btnInfo:hover {
+  background-color: #138496;
+}
+
+.textMuted {
+  color: #6c757d;
+}
+
+.textMuted:hover {
+  text-decoration: underline;
+}
+
+.linkInfo {
+  color: #17a2b8;
+}
+
+.linkInfo:hover {
+  text-decoration: underline;
+}
+
+.colImage {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .colImage {
+    display: block;
+  }
+}
