@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../app/components/page.module.css";
+import styles from "../app/page.module.css";
 import "./globals.css";
 import { Belleza } from "next/font/google";
 import Link from "next/link";
