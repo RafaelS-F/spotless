@@ -1,0 +1,298 @@
+/* src/app/usuario/UserProfilePage.module.css */
+/* As variáveis CSS (--primary-blue, --secondary-orange, etc.)
+   devem ser definidas em um arquivo CSS global (ex: src/app/globals.css) */
+
+   .profileContainer {
+    max-width: 900px; /* Largura máxima do container */
+    margin: 40px auto; /* Centraliza e adiciona margem */
+    padding: 30px;
+    background-color: var(--background-color); /* Usa variável global */
+    border-radius: 12px; /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    font-family: 'Inter', sans-serif; /* Fonte moderna - certifique-se de importar a fonte no seu projeto */
+  }
+  
+  .title {
+    color: var(--primary-blue); /* Usa variável global */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem; /* Tamanho maior para o título */
+  }
+  
+  /* Estilos das Abas */
+  .tabs {
+    display: flex;
+    justify-content: center; /* Centraliza os botões das abas */
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color); /* Usa variável global */
+  }
+  
+  .tabButton {
+    padding: 12px 25px; /* Mais padding para melhor toque */
+    cursor: pointer;
+    background-color: transparent; /* Fundo transparente por padrão */
+    border: none;
+    border-bottom: 3px solid transparent; /* Borda inferior para indicar ativação */
+    margin: 0 5px -2px 5px; /* Leve sobreposição com a borda inferior do container */
+    font-size: 1rem;
+    font-weight: 600; /* Texto um pouco mais forte */
+    color: var(--grey-text); /* Usa variável global */
+    transition: all 0.3s ease; /* Transição suave */
+    border-radius: 6px 6px 0 0; /* Arredondamento apenas no topo */
+  }
+  
+  .tabButton:hover {
+    background-color: var(--light-blue); /* Usa variável global */
+    color: var(--primary-blue); /* Usa variável global */
+  }
+  
+  .tabButton.active {
+    color: var(--primary-blue); /* Usa variável global */
+    border-bottom-color: var(--primary-blue); /* Usa variável global */
+    font-weight: 700;
+  }
+  
+  /* Conteúdo das Abas */
+  .tabContent {
+    padding: 20px 0; /* Espaçamento vertical */
+    animation: fadeIn 0.5s ease; /* Animação de entrada */
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Aba de Serviços */
+  .serviceList h2,
+  .dataForm h2,
+  .reviewList h2 {
+    color: var(--dark-text); /* Usa variável global */
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border-color); /* Usa variável global */
+    padding-bottom: 10px;
+  }
+  
+  .serviceItem {
+    background-color: var(--card-background); /* Usa variável global */
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color); /* Usa variável global */
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .serviceItem:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .serviceItem p {
+    margin: 5px 0;
+    color: var(--grey-text); /* Usa variável global */
+  }
+  
+  .serviceItem p strong {
+    color: var(--dark-text); /* Usa variável global */
+    min-width: 80px; /* Alinha os valores */
+    display: inline-block;
+  }
+  
+  .status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--light-text); /* Usa variável global */
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  /* Estilos específicos para status usando classes CSS Modules */
+  .agendado { /* Classe para status 'Agendado' */
+    background-color: var(--warning-color); /* Usa variável global */
+    color: var(--dark-text); /* Melhor contraste com amarelo */
+  }
+  
+  .concluído { /* Classe para status 'Concluído' */
+    background-color: var(--success-color); /* Usa variável global */
+  }
+  
+  /* Aba de Dados (Formulário) */
+  .dataForm {
+    background-color: var(--card-background); /* Usa variável global */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color); /* Usa variável global */
+  }
+  
+  .formField {
+    margin-bottom: 20px;
+  }
+  
+  .formField label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-text); /* Usa variável global */
+  }
+  
+  .formField input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color); /* Usa variável global */
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que padding não aumente a largura */
+    transition: border-color 0.3s ease;
+  }
+  
+  .formField input:focus {
+    outline: none;
+    border-color: var(--primary-blue); /* Usa variável global */
+    box-shadow: 0 0 0 2px var(--light-blue); /* Usa variável global */
+  }
+  
+  .readOnly { /* Classe para inputs não editáveis */
+    background-color: #eee !important; /* Fundo cinza para campos não editáveis */
+    cursor: default !important;
+    border-color: #ddd !important; /* Borda mais clara */
+  }
+  
+  .editButton {
+    background-color: var(--secondary-orange); /* Usa variável global */
+    color: var(--light-text); /* Usa variável global */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: block; /* Faz ocupar a largura disponível (opcional) */
+    margin-top: 10px; /* Espaço acima do botão */
+    width: auto; /* Ou '100%' se quiser largura total */
+  }
+  
+  .editButton:hover {
+    background-color: #e66a00; /* Laranja mais escuro no hover */
+  }
+  
+  .editButton:active {
+      transform: scale(0.98); /* Efeito de clique */
+  }
+  
+  /* Aba de Avaliações */
+  .reviewList {
+    display: grid; /* Usa grid para layout dos cards */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: 20px; /* Espaçamento entre cards */
+  }
+  
+  .reviewCard {
+    background-color: var(--card-background); /* Usa variável global */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color); /* Usa variável global */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .reviewCard:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .reviewHeader strong {
+    color: var(--primary-blue); /* Usa variável global */
+    font-size: 1.1rem;
+  }
+  
+  .rating {
+    color: var(--warning-color); /* Usa variável global */
+    font-size: 1.1rem;
+  }
+  
+  .reviewCard p {
+    color: var(--grey-text); /* Usa variável global */
+    line-height: 1.5;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .profileContainer {
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .tabs {
+      flex-wrap: wrap;
+       justify-content: flex-start;
+    }
+  
+    .tabButton {
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      flex-grow: 1;
+      text-align: center;
+      margin: 0 2px -2px 2px;
+    }
+  
+    .title {
+      font-size: 1.8rem;
+    }
+  
+    .serviceList h2,
+    .dataForm h2,
+    .reviewList h2 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+     .profileContainer {
+      margin: 10px;
+      padding: 15px;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .tabs {
+       border-bottom: none;
+    }
+  
+    .tabButton {
+        border-radius: 6px;
+        margin-bottom: 5px;
+        border-bottom: none;
+    }
+  
+    .tabButton.active {
+        background-color: var(--primary-blue); /* Usa variável global */
+        color: var(--light-text); /* Usa variável global */
+    }
+     .tabButton:hover {
+        background-color: var(--light-blue); /* Usa variável global */
+        color: var(--primary-blue); /* Usa variável global */
+    }
+    .tabButton.active:hover {
+         background-color: var(--primary-blue); /* Usa variável global */
+         color: var(--light-text); /* Usa variável global */
+    }
+  
+    .reviewList {
+      grid-template-columns: 1fr;
+    }
+  
+    .editButton {
+        width: 100%;
+    }
+  }
+  
+  

@@ -22,5 +22,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
-  }
+  },
+  "dependencies": {
+  "mssql": "^9.1.1",
+  "tedious": "^15.1.2",
+  "dotenv": "^16.3.1"
+}
 }

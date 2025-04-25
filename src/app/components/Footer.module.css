@@ -1,0 +1,68 @@
+/* src/components/Footer.module.css */
+/* Este arquivo usa variáveis definidas em globals.css */
+
+.footer {
+    background-color: #2c3e50; /* Um azul acinzentado escuro */
+    color: #bdc3c7; /* Cinza claro para texto */
+    padding: 30px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column; /* Empilha links e copyright */
+    align-items: center; /* Centraliza o conteúdo */
+    text-align: center;
+  }
+  
+  .links {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    justify-content: center;
+    gap: 15px 30px; /* Espaçamento vertical e horizontal */
+  }
+  
+  .link {
+    color: #ecf0f1; /* Branco suave para links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .link:hover {
+    color: var(--secondary-orange); /* Laranja no hover */
+  }
+  
+  .copyright {
+    border-top: 1px solid #3e5165; /* Linha separadora sutil */
+    padding-top: 15px;
+    width: 100%; /* Faz a linha ocupar a largura */
+    max-width: 400px; /* Limita a largura da linha e texto */
+    margin-top: 15px; /* Espaço entre links e copyright */
+  }
+  
+  /* Responsividade */
+  @media (min-width: 768px) {
+      .container {
+          flex-direction: row; /* Lado a lado em telas maiores */
+          justify-content: space-between;
+          text-align: left;
+      }
+      .links {
+          margin-bottom: 0;
+          justify-content: flex-start;
+      }
+      .copyright {
+          border-top: none;
+          padding-top: 0;
+          margin-top: 0;
+          width: auto;
+          text-align: right;
+      }
+  }
+  
+  

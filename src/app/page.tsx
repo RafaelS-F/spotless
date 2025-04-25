@@ -239,43 +239,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="secao5" className={`${styles.section} ${styles.section5}`}>
-          <div className={styles.footerContainer}>
-            <div className={styles.footerColuna}>
-              <h3>Sobre Nós</h3>
-              <p>
-                Conectamos você aos melhores profissionais de limpeza
-                residencial.
-              </p>
-            </div>
-            <div className={styles.footerColuna}>
-              <h3>Links Rápidos</h3>
-              <ul>
-                <li>
-                  <a href="#secao1">Home</a>
-                </li>
-                <li>
-                  <a href="#secao2">Serviços</a>
-                </li>
-                <li>
-                  <a href="#secao3">Sobre</a>
-                </li>
-                <li>
-                  <a href="#secao4">Depoimentos</a>
-                </li>
-              </ul>
-            </div>
-            <div className={styles.footerColuna}>
-              <h3>Contato</h3>
-              <p>Telefone: (11) 1234-5678</p>
-              <p>E-mail: contato@limpezafacil.com</p>
-              <p>Endereço: Rua Exemplo, 123 - São Paulo, SP</p>
-            </div>
-          </div>
-          <div className={styles.footerDireitos}>
-            <p>&copy; 2023 Limpeza Fácil. Todos os direitos reservados.</p>
-          </div>
-        </section>
       </main>
     </div>
   );

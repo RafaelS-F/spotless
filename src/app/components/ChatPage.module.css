@@ -1,0 +1,170 @@
+/* src/components/ChatPage.module.css */
+/* Este arquivo usa variáveis definidas em globals.css */
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 150px); /* Ajuste a altura conforme necessário (considerando header/footer) */
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Para conter os cantos arredondados */
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .chatHeader {
+    background-color: var(--primary-blue);
+    color: var(--light-text);
+    padding: 15px 20px;
+    border-bottom: 1px solid #0056b3; /* Tom de azul mais escuro */
+    border-radius: 12px 12px 0 0; /* Arredonda cantos superiores */
+  }
+  
+  .chatHeader h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .messageList {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    overflow-y: auto; /* Habilita scroll vertical */
+    padding: 20px;
+    background-color: #f0f4f8; /* Fundo levemente azulado/acinzentado */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre as mensagens */
+  }
+  
+  .messageItem {
+    display: flex;
+    align-items: flex-end; /* Alinha avatar com a base da bolha */
+    max-width: 75%; /* Largura máxima da mensagem */
+  }
+  
+  .avatar {
+    border-radius: 50%;
+    margin: 0 10px;
+    width: 30px; /* Garante tamanho consistente */
+    height: 30px;
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+  }
+  
+  .messageContent {
+    padding: 10px 15px;
+    border-radius: 18px; /* Bolhas arredondadas */
+    position: relative; /* Para posicionar o timestamp */
+    word-wrap: break-word; /* Quebra palavras longas */
+  }
+  
+  .messageText {
+      margin: 0;
+      line-height: 1.4;
+  }
+  
+  .timestamp {
+    font-size: 0.75rem;
+    color: var(--grey-text);
+    display: block; /* Fica abaixo do texto */
+    margin-top: 5px;
+    text-align: right;
+  }
+  
+  /* Mensagens do Usuário (Direita, Laranja) */
+  .userMessage {
+    align-self: flex-end; /* Alinha à direita */
+    flex-direction: row-reverse; /* Inverte ordem (avatar à direita) */
+  }
+  
+  .userMessage .messageContent {
+    background-color: var(--secondary-orange);
+    color: var(--light-text);
+    border-bottom-right-radius: 5px; /* Ponta na bolha */
+  }
+  .userMessage .timestamp {
+      color: rgba(255, 255, 255, 0.8); /* Timestamp mais claro */
+  }
+  
+  
+  /* Mensagens do Contratado (Esquerda, Azul) */
+  .contractorMessage {
+    align-self: flex-start; /* Alinha à esquerda */
+    flex-direction: row; /* Ordem padrão (avatar à esquerda) */
+  }
+  
+  .contractorMessage .messageContent {
+    background-color: var(--primary-blue);
+    color: var(--light-text);
+    border-bottom-left-radius: 5px; /* Ponta na bolha */
+  }
+  .contractorMessage .timestamp {
+      color: rgba(255, 255, 255, 0.8); /* Timestamp mais claro */
+  }
+  
+  
+  /* Área de Input */
+  .messageInputArea {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-background);
+  }
+  
+  .inputField {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* Input arredondado */
+    margin-right: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputField:focus {
+    border-color: var(--primary-blue);
+  }
+  
+  .sendButton {
+    background-color: var(--primary-blue);
+    color: var(--light-text);
+    border: none;
+    border-radius: 50%; /* Botão circular */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    flex-shrink: 0; /* Impede que o botão encolha */
+  }
+  .sendButton svg {
+      margin-left: 2px; /* Pequeno ajuste do ícone */
+  }
+  
+  .sendButton:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+  }
+  .sendButton:active {
+      transform: scale(0.95);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+      .chatContainer {
+          margin: 10px;
+          height: calc(100vh - 120px); /* Ajuste para telas menores */
+          border-radius: 0; /* Remove bordas em tela cheia */
+      }
+      .messageItem {
+          max-width: 85%;
+      }
+       .chatHeader {
+          border-radius: 0;
+      }
+  }
+  
+  
