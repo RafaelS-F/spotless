@@ -1,37 +1,55 @@
-// src/components/Header.tsx
-'use client'; // Pode ser necessário se usar hooks ou event handlers no futuro
+'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Header.module.css';
-import Image from 'next/image'
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(prev => !prev);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-            <Image
-                src="/logo1.png"
-                alt="Spotless Logo"
-                width={150}
-                height={40}
-            />
+          <Image
+            src="/logo1.png"
+            alt="Spotless Logo"
+            width={170}
+            height={50}
+          />
         </Link>
+
+        {/* Navegação desktop */}
         <nav className={styles.nav}>
-          <Link href="/" className={styles.navLink}>
-            Início
-          </Link>
-          <Link href="/servicos" className={styles.navLink}>
-            Serviços
-          </Link>
-          <Link href="/contato" className={styles.navLink}>
-            Contato
-          </Link>
-          <Link href="/usuario" className={styles.navLinkAccount}>
-            Minha Conta
-          </Link>
+          <Link href="/" className={styles.navLink}>Início</Link>
+          <Link href="/servicos" className={styles.navLink}>Serviços</Link>
+          <Link href="/contato" className={styles.navLink}>Contato</Link>
+          <Link href="/usuario" className={styles.navLinkAccount}>Minha Conta</Link>
         </nav>
-        {/* Adicionar um botão de menu hamburguer para mobile aqui se necessário */}
+
+        {/* Botão hambúrguer para mobile (três linhas) */}
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+        >
+          <div />
+          <div />
+          <div />
+        </button>
+
+        {/* Navegação mobile */}
+        <nav
+          className={`${styles.navMobile} ${menuOpen ? styles.open : ''}`}
+          aria-hidden={!menuOpen}
+        >
+          <Link href="/" onClick={toggleMenu} className={styles.navLink}>Início</Link>
+          <Link href="/servicos" onClick={toggleMenu} className={styles.navLink}>Serviços</Link>
+          <Link href="/contato" onClick={toggleMenu} className={styles.navLink}>Contato</Link>
+          <Link href="/usuario" onClick={toggleMenu} className={styles.navLinkAccount}>Minha Conta</Link>
+        </nav>
       </div>
     </header>
   );

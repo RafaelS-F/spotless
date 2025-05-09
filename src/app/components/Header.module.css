@@ -1,105 +1,131 @@
-
 .header {
-    background-color: var(--primary-blue); /* Cor principal azul */
-    color: var(--light-text);
-    padding: 15px 0;
-    position: sticky; /* Fixa o header no topo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Garante que fique acima de outros conteúdos */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .container {
-    max-width: 1200px; /* Largura máxima do conteúdo interno */
-    margin: 0 auto; /* Centraliza */
-    padding: 0 20px; /* Espaçamento lateral */
-    display: flex;
-    justify-content: space-between; /* Logo à esquerda, nav à direita */
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--light-text);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-  .logo:hover {
-    opacity: 0.9;
-  }
-  
+  background-color: var(--primary-blue);
+  color: var(--light-text);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--light-text);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.logo:hover {
+  opacity: 0.9;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navLink {
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary-orange);
+  transition: width 0.3s ease;
+}
+.navLink:hover {
+  color: #f0f0f0;
+}
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navLinkAccount {
+  composes: navLink;
+  background-color: var(--secondary-orange);
+  color: var(--light-text);
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.navLinkAccount::after {
+  display: none;
+}
+.navLinkAccount:hover {
+  background-color: #e66a00;
+}
+.navLinkAccount:active {
+  transform: scale(0.98);
+}
+
+/* BOTÃO HAMBURGUER */
+.hamburger {
+  display: none;            /* permanece escondido no desktop */
+  flex-direction: column;   /* empilha as linhas verticalmente */
+  gap: 5px;                 /* espaço entre elas */
+  background: none;         /* sem fundo */
+  border: none;             /* sem borda */
+  padding: 0;               /* sem espaçamento extra */
+  cursor: pointer;          /* indicador de botão */
+}
+.hamburger div {
+  width: 24px;              /* comprimento fixo */
+  height: 3px;              /* espessura da linha */
+  background-color: var(--light-text); /* cor da linha */
+}
+
+/* NAV MÓVEL */
+.navMobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-blue);
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+.navMobile.open {
+  display: flex;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .nav {
+    display: none;
+  }
+
+  .hamburger {
     display: flex;
-    align-items: center;
-    gap: 25px; /* Espaço entre os links */
   }
-  
-  .navLink {
-    color: var(--light-text);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color 0.3s ease;
+
+  .navMobile {
+    display: none;
   }
-  
-  .navLink::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--secondary-orange); /* Linha laranja no hover */
-    transition: width 0.3s ease;
-  }
-  
-  .navLink:hover {
-    color: #f0f0f0; /* Clareia um pouco no hover */
-  }
-  
-  .navLink:hover::after {
-    width: 100%;
-  }
-  
-  .navLinkAccount {
-    /* Estilo diferenciado para o link da conta */
-    composes: navLink; /* Herda estilos do navLink */
-    background-color: var(--secondary-orange);
-    color: var(--light-text);
-    padding: 8px 15px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-  }
-  .navLinkAccount::after {
-      display: none; /* Remove a linha laranja para este botão */
-  }
-  
-  .navLinkAccount:hover {
-    background-color: #e66a00; /* Laranja mais escuro */
-    color: var(--light-text); /* Mantém a cor do texto */
-  }
-  .navLinkAccount:active {
-      transform: scale(0.98);
-  }
-  
-  
-  /* Responsividade básica */
-  @media (max-width: 768px) {
-    .nav {
-      /* Em telas menores, você pode querer esconder a navegação
-         e mostrar um botão de menu hamburguer */
-      display: none; /* Exemplo: esconder nav */
-    }
-    .container {
-      /* Ajustar para talvez mostrar só o logo e o botão do menu */
-    }
-    /* Adicionar estilos para o menu hamburguer aqui */
-  }
-  
+}
