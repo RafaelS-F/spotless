@@ -1,11 +1,9 @@
-// src/app/usuario/page.tsx (ou onde preferir colocar)
-'use client'; // Necessário para usar hooks como useState
+
+'use client';
 
 import React, { useState } from 'react';
-import styles from './UserProfilePage.module.css'; // Importa os estilos CSS Modules
+import styles from './UserProfilePage.module.css';
 
-// --- Mock Data ---
-// Em uma aplicação real, estes dados viriam do backend
 const mockUserData = {
   name: 'Ana Silva',
   email: 'ana.silva@email.com',
@@ -40,7 +38,6 @@ export default function UserProfilePage() {
 
   const toggleEdit = () => {
     if (isEditing) {
-      // Aqui você normalmente enviaria os dados atualizados para o backend
       console.log('Salvando dados:', userData);
     }
     setIsEditing(!isEditing);
