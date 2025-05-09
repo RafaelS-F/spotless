@@ -1,9 +1,9 @@
-// src/components/Footer.tsx
+
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear(); // Pega o ano atual
+  const currentYear = new Date().getFullYear(); 
 
   return (
     <footer className={styles.footer}>
@@ -22,7 +22,7 @@ export default function Footer() {
         <div className={styles.copyright}>
           © {currentYear} Spotless Limpeza. Todos os direitos reservados.
         </div>
-        {/* Adicionar ícones de redes sociais aqui se desejar */}
+        {}
       </div>
     </footer>
   );
