@@ -82,23 +82,23 @@
   transform: scale(0.98);
 }
 
-/* BOTÃO HAMBURGUER */
+
 .hamburger {
-  display: none;            /* permanece escondido no desktop */
-  flex-direction: column;   /* empilha as linhas verticalmente */
-  gap: 5px;                 /* espaço entre elas */
-  background: none;         /* sem fundo */
-  border: none;             /* sem borda */
-  padding: 0;               /* sem espaçamento extra */
-  cursor: pointer;          /* indicador de botão */
+  display: none;            
+  flex-direction: column;  
+  gap: 5px;                
+  background: none;         
+  border: none;             
+  padding: 0;               
+  cursor: pointer;          
 }
 .hamburger div {
-  width: 24px;              /* comprimento fixo */
-  height: 3px;              /* espessura da linha */
-  background-color: var(--light-text); /* cor da linha */
+  width: 24px;             
+  height: 3px;             
+  background-color: var(--light-text);
 }
 
-/* NAV MÓVEL */
+
 .navMobile {
   display: none;
   position: absolute;
@@ -115,7 +115,7 @@
   display: flex;
 }
 
-/* Responsividade */
+
 @media (max-width: 768px) {
   .nav {
     display: none;
