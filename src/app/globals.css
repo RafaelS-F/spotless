@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 html, body {
   padding: 0;
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #FAFAFA; /* Fundo ligeiramente off-white comum em perfis */
-  color: #262626; /* Cor de texto padrão */
+  background-color: #FAFAFA;
+  color: #262626;
 }
 
 :root {
-   /* Defina suas variáveis de cor aqui para consistência */
    --primary-text-color: #262626;
    --secondary-text-color: #8e8e8e;
    --border-color: #dbdbdb;
@@ -19,7 +18,6 @@ html, body {
    --button-secondary-background: #efefef;
    --button-primary-background: #0095f6;
    --button-primary-background-hover: #1877f2;
-   /* Adicione outras cores conforme necessário */
 }
 
 * {
@@ -27,33 +25,32 @@ html, body {
 }
 
 a {
-  color: inherit; /* Remove cor padrão de link */
-  text-decoration: none; /* Remove sublinhado padrão */
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-    cursor: pointer; /* Garante cursor pointer em botões */
+    cursor: pointer;
 }
 
-/* src/app/globals.css (ou similar) */
 :root {
-  /* --- Color Palette --- */
-  --primary-blue: #007bff;    /* Um azul vibrante mas padrão */
-  --primary-orange: #fd7e14;   /* Um laranja claro e energético */
-  --accent-blue-light: #e7f3ff; /* Azul muito claro para fundos/hovers sutis */
-  --accent-orange-light: #fff2e7;/* Laranja muito claro */
+  
+  --primary-blue: #007bff;    
+  --primary-orange: #fd7e14; 
+  --accent-blue-light: #e7f3ff; 
+  --accent-orange-light: #fff2e7;
 
-  --text-primary: #212529;      /* Preto/Cinza escuro para texto principal */
-  --text-secondary: #6c757d;   /* Cinza médio para texto secundário/legendas */
-  --text-on-primary: #ffffff;  /* Texto branco para usar sobre fundos coloridos */
-  --text-link: var(--primary-blue); /* Links usarão o azul primário por padrão */
+  --text-primary: #212529;      
+  --text-secondary: #6c757d;  
+  --text-on-primary: #ffffff;
+  --text-link: var(--primary-blue);
 
-  --background-body: #ffffff; /* Fundo principal branco */
-  --background-alt: #f8f9fa;  /* Fundo alternativo levemente cinza */
-  --border-color: #dee2e6;     /* Cor padrão para bordas */
+  --background-body: #ffffff; 
+  --background-alt: #f8f9fa; 
+  --border-color: #dee2e6;   
   --border-color-light: #e9ecef;
 
-  /* --- Modern Styling --- */
+  
   --border-radius-small: 4px;
   --border-radius-medium: 8px;
   --border-radius-large: 12px;
@@ -63,11 +60,10 @@ button {
 body {
   background-color: var(--background-body);
   color: var(--text-primary);
-  /* Considere definir a fonte aqui */
-  /* font-family: 'Inter', sans-serif; */
+ 
 }
 
-/* Opcional: Reset básico ou normalização */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -76,8 +72,8 @@ body {
 
 button, a {
   cursor: pointer;
-  text-decoration: none; /* Remover sublinhado padrão de links */
-  color: inherit; /* Herdar cor do texto por padrão */
+  text-decoration: none; 
+  color: inherit; 
 }
 
 ul, li {
@@ -85,24 +81,18 @@ ul, li {
 }
 
 
-/* Adicione ou modifique em src/app/globals.css */
+
 :root {
-  /* Cores Principais Spotless */
-  --primary-blue: #007bff; /* Azul primário */
-  --secondary-orange: #fd7e14; /* Laranja secundário/acento */
-  --light-blue: #e7f3ff; /* Azul claro para fundos/hover */
-  --light-orange: #fff3e0; /* Laranja claro para fundos/hover */
+  --primary-blue: #007bff; 
+  --secondary-orange: #fd7e14;
+  --light-blue: #e7f3ff;
+  --light-orange: #fff3e0;
   --dark-text: #333;
   --light-text: #fff;
   --grey-text: #666;
   --border-color: #ddd;
-  --success-color: #28a745; /* Verde para status 'Concluído' */
-  --warning-color: #ffc107; /* Amarelo para status 'Agendado' */
+  --success-color: #28a745;
+  --warning-color: #ffc107;
   --background-color: #f8f9fa;
   --card-background: #ffffff;
-
-  /* Outras variáveis globais que você possa ter... */
 }
-
-/* Certifique-se de que este arquivo globals.css está sendo importado
-   no seu layout principal (ex: src/app/layout.tsx) */
