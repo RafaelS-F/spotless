@@ -21,7 +21,7 @@ export default function Header() {
           />
         </Link>
 
-        {/* Navegação desktop */}
+        {}
         <nav className={styles.nav}>
           <Link href="/" className={styles.navLink}>Início</Link>
           <Link href="/servicos" className={styles.navLink}>Serviços</Link>
@@ -29,7 +29,7 @@ export default function Header() {
           <Link href="/usuario" className={styles.navLinkAccount}>Minha Conta</Link>
         </nav>
 
-        {/* Botão hambúrguer para mobile (três linhas) */}
+        {}
         <button
           className={styles.hamburger}
           onClick={toggleMenu}
@@ -40,7 +40,7 @@ export default function Header() {
           <div />
         </button>
 
-        {/* Navegação mobile */}
+        {}
         <nav
           className={`${styles.navMobile} ${menuOpen ? styles.open : ''}`}
           aria-hidden={!menuOpen}
