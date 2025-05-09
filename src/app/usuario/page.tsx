@@ -22,7 +22,6 @@ const mockReviews = [
   { id: 2, author: 'Mariana Costa', rating: 4, comment: 'Gostei muito da limpeza, profissional atenciosa.' },
   { id: 3, author: 'João Souza', rating: 5, comment: 'Rápido, eficiente e cuidadoso. Excelente!' },
 ];
-// --- Fim Mock Data ---
 
 type Tab = 'services' | 'data' | 'reviews';
 
