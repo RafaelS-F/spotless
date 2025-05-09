@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
 
       <main>
-        {/* Hero Section */}
+        {}
         <section id="secao1" className={`${styles.section} ${styles.section1}`}>
           <div className={styles.heroContent}>
             <h1>
@@ -32,7 +32,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Serviços Section */}
+        {}
         <section id="secao2" className={styles.section2}>
           <div className={styles.row1}>
             <h2>Encontre diaristas qualificadas</h2>
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sobre nós */}
+        {}
         <section id="secao3" className={`${styles.section} ${styles.section3}`}>
           <div className={styles.containerSecao3}>
             <div className={styles.imageContainerSecao3}>
@@ -83,7 +83,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Vantagens */}
+        {}
         <section id="secao3-5" className={`${styles.section} ${styles.section3_5}`}>
           <div className={styles.containerSecao3_5}>
             <h2 className={styles.sectionTitle}>Vantagens que você só encontra no Spotless</h2>
@@ -110,7 +110,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Depoimentos */}
+        {}
         <section id="secao4" className={`${styles.section} ${styles.section4}`}>
           <h2 className={styles.sectionTitleWhite}>O que nossos clientes dizem</h2>
           <div className={styles.depoimentosContainer}>
