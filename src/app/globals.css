@@ -1,25 +1,92 @@
+/* src/app/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-html, body {
+:root {
+  /* Light Theme (Default) */
+  --background-body: #FAFAFA; /* Fundo ligeiramente off-white */
+  --background-card: #ffffff;
+  --background-section-light: #f5f5f5;
+  --background-section-dark-gradient-start: #0d47a1;
+  --background-section-dark-gradient-end: #1976d2;
+  --background-section-advantages: #e3f2fd;
+  --background-button-primary: #ff6f00;
+  --background-button-primary-hover: #e65100;
+  --background-button-secondary: #efefef;
+  --background-header: #1976d2; /* Cor original do fundo do seu header no tema claro */
+  --background-footer: #1976d2;
+  --text-header: #333333; /* Cor original do texto do seu header no tema claro */
+
+  --text-primary: #ffffff; /* Cor de texto padrão */
+  --text-secondary: #6c757d; /* Cinza médio para texto secundário */
+  --text-on-dark-bg: #ffffff;
+  --text-on-primary-button: #ffffff;
+  --text-link: #00376b;
+  --text-headings: #333; /* For h1, h2, etc. on light backgrounds */
+  --text-card-elements: #333; /* Text within cards */
+
+  --border-color: #dbdbdb;
+  --border-color-light: #e9ecef;
+  --box-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --box-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow-advantage-card: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  --star-color: #ffb300;
+
+  /* Modern Styling */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+
+  /* Bootstrap variable overrides (optional, if you want to theme Bootstrap components too) */
+  /* --bs-body-bg: var(--background-body); */
+  /* --bs-body-color: var(--text-primary); */
+}
+
+[data-theme="dark"] {
+  --background-body: #2a2a2a;
+  --background-card: #13202d;
+  --background-section-light: #1a2a3a;
+  --background-section-dark-gradient-start: #2a2a2a; /* Slightly adjusted for dark mode */
+  --background-section-dark-gradient-end: #2a2a2a;
+  --background-section-advantages: #1a2a3a; /* Darker blue for advantages section */
+  --background-button-primary: #ff8f00; /* Brighter orange for dark mode */
+  --background-button-primary-hover: #ffa000;
+  --background-button-secondary: #333333;
+  --background-header: #1e1e1e; /* Cor de fundo desejada para o header no tema escuro (ex: um cinza escuro) */
+  --background-footer: #1e1e1e;
+  --text-header: #e0e0e0; /* Cor de texto desejada para o header no tema escuro */
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-on-dark-bg: #e0e0e0;
+  --text-on-primary-button: #121212; /* Dark text on brighter orange button */
+  --text-link: #4dabf7; /* Lighter blue for links */
+  --text-headings: #e0e0e0;
+  --text-card-elements: #e0e0e0;
+
+  --border-color: #444444;
+  --border-color-light: #333333;
+  --box-shadow-subtle: 0 1px 3px rgba(255, 255, 255, 0.05);
+  --box-shadow-card: 0 4px 12px rgba(255, 255, 255, 0.08);
+  --box-shadow-advantage-card: 0 2px 10px rgba(255, 255, 255, 0.03);
+
+  --star-color: #ffc107; /* Keep stars bright */
+}
+
+html {
   padding: 0;
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #FAFAFA; /* Fundo ligeiramente off-white comum em perfis */
-  color: #262626; /* Cor de texto padrão */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition for html */
 }
 
-:root {
-   /* Defina suas variáveis de cor aqui para consistência */
-   --primary-text-color: #262626;
-   --secondary-text-color: #8e8e8e;
-   --border-color: #dbdbdb;
-   --border-color-hover: #c7c7c7;
-   --link-color: #00376b;
-   --button-secondary-background: #efefef;
-   --button-primary-background: #0095f6;
-   --button-primary-background-hover: #1877f2;
-   /* Adicione outras cores conforme necessário */
+body {
+  background-color: var(--background-body);
+  color: var(--text-primary);
+  padding: 0;
+  margin: 0;
+  /* font-family is inherited from html */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition for body */
 }
 
 * {
@@ -27,82 +94,22 @@ html, body {
 }
 
 a {
-  color: inherit; /* Remove cor padrão de link */
-  text-decoration: none; /* Remove sublinhado padrão */
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Optional: add underline on hover for links */
 }
 
 button {
-    cursor: pointer; /* Garante cursor pointer em botões */
-}
-
-/* src/app/globals.css (ou similar) */
-:root {
-  /* --- Color Palette --- */
-  --primary-blue: #007bff;    /* Um azul vibrante mas padrão */
-  --primary-orange: #fd7e14;   /* Um laranja claro e energético */
-  --accent-blue-light: #e7f3ff; /* Azul muito claro para fundos/hovers sutis */
-  --accent-orange-light: #fff2e7;/* Laranja muito claro */
-
-  --text-primary: #212529;      /* Preto/Cinza escuro para texto principal */
-  --text-secondary: #6c757d;   /* Cinza médio para texto secundário/legendas */
-  --text-on-primary: #ffffff;  /* Texto branco para usar sobre fundos coloridos */
-  --text-link: var(--primary-blue); /* Links usarão o azul primário por padrão */
-
-  --background-body: #ffffff; /* Fundo principal branco */
-  --background-alt: #f8f9fa;  /* Fundo alternativo levemente cinza */
-  --border-color: #dee2e6;     /* Cor padrão para bordas */
-  --border-color-light: #e9ecef;
-
-  /* --- Modern Styling --- */
-  --border-radius-small: 4px;
-  --border-radius-medium: 8px;
-  --border-radius-large: 12px;
-  --box-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  background-color: var(--background-body);
-  color: var(--text-primary);
-  /* Considere definir a fonte aqui */
-  /* font-family: 'Inter', sans-serif; */
-}
-
-/* Opcional: Reset básico ou normalização */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-button, a {
-  cursor: pointer;
-  text-decoration: none; /* Remover sublinhado padrão de links */
-  color: inherit; /* Herdar cor do texto por padrão */
+    cursor: pointer;
 }
 
 ul, li {
  list-style: none;
+ padding: 0; /* Ensure no default padding on lists */
+ margin: 0;  /* Ensure no default margin on lists */
 }
 
-
-/* Adicione ou modifique em src/app/globals.css */
-:root {
-  /* Cores Principais Spotless */
-  --primary-blue: #007bff; /* Azul primário */
-  --secondary-orange: #fd7e14; /* Laranja secundário/acento */
-  --light-blue: #e7f3ff; /* Azul claro para fundos/hover */
-  --light-orange: #fff3e0; /* Laranja claro para fundos/hover */
-  --dark-text: #333;
-  --light-text: #fff;
-  --grey-text: #666;
-  --border-color: #ddd;
-  --success-color: #28a745; /* Verde para status 'Concluído' */
-  --warning-color: #ffc107; /* Amarelo para status 'Agendado' */
-  --background-color: #f8f9fa;
-  --card-background: #ffffff;
-
-  /* Outras variáveis globais que você possa ter... */
-}
-
-/* Certifique-se de que este arquivo globals.css está sendo importado
-   no seu layout principal (ex: src/app/layout.tsx) */
+/* Ensure this file is imported in your layout.tsx */

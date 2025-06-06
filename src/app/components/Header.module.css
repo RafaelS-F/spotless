@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--primary-blue);
+  background-color: var(--background-header);
   color: var(--light-text);
   padding: 15px 0;
   position: sticky;
@@ -9,6 +9,10 @@
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-family: 'Inter', sans-serif;
+}
+html.dark body {
+  background-color: #121212;
+  color: #ffffff;
 }
 
 .container {
@@ -114,6 +118,7 @@
 .navMobile.open {
   display: flex;
 }
+
 
 /* Responsividade */
 @media (max-width: 768px) {

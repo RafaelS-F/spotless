@@ -1,16 +1,16 @@
-/* Modernizado para design contemporâneo e elegante */
-
+/* src/app/page.module.css */
 .section {
   padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease; /* For smooth section transitions */
 }
 
 .section1 {
-  background: linear-gradient(135deg, #0d47a1, #1976d2);
-  color: white;
+  background: linear-gradient(135deg, var(--background-section-dark-gradient-start), var(--background-section-dark-gradient-end)); /* [cite: 15] */
+  color: var(--text-on-dark-bg); /* [cite: 15] */
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -18,165 +18,208 @@
 }
 
 .heroContent h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 3rem; /* [cite: 3] */
+  font-weight: bold; /* [cite: 3] */
+  margin-bottom: 1rem; /* [cite: 3] */
+  color: var(--text-on-dark-bg); /* Ensure text on gradient is always light/contrasting */
 }
 
 .heroContent p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem; /* [cite: 4] */
+  margin-bottom: 2rem; /* [cite: 4] */
+  color: var(--text-on-dark-bg); /* Ensure text on gradient is always light/contrasting */
 }
 
 .buttonGroup {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+  display: flex; /* [cite: 4] */
+  gap: 1rem; /* [cite: 4] */
+  justify-content: center; /* [cite: 4] */
 }
 
 .button {
-  background-color: #ff6f00;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: var(--background-button-primary); /* [cite: 5] */
+  color: var(--text-on-primary-button); /* [cite: 5] */
+  border: none; /* [cite: 5] */
+  padding: 0.75rem 1.5rem; /* [cite: 5] */
+  border-radius: var(--border-radius-medium); /* [cite: 5] */
+  font-size: 1rem; /* [cite: 5] */
+  cursor: pointer; /* [cite: 5] */
+  transition: background-color 0.3s ease; /* [cite: 5] */
 }
 
 .button:hover {
-  background-color: #e65100;
+  background-color: var(--background-button-primary-hover); /* [cite: 6] */
 }
 
 .section2 {
-  background-color: #f5f5f5;
-  padding: 4rem 2rem;
+  background-color: var(--background-section-light); /* [cite: 6] */
+  padding: 4rem 2rem; /* [cite: 6] */
 }
 
 .row1 h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
+  font-size: 2rem; /* [cite: 7] */
+  margin-bottom: 2rem; /* [cite: 7] */
+  text-align: center; /* [cite: 7] */
+  color: var(--text-headings);
 }
 
 .row2 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  display: flex; /* [cite: 7] */
+  flex-wrap: wrap; /* [cite: 7] */
+  gap: 2rem; /* [cite: 7] */
+  justify-content: center; /* [cite: 7] */
 }
 
 .columnSecao2 {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  max-width: 300px;
-  text-align: left;
+  background: var(--background-card); /* [cite: 8] */
+  border-radius: var(--border-radius-large); /* [cite: 8] */
+  box-shadow: var(--box-shadow-card); /* [cite: 8] */
+  padding: 1.5rem; /* [cite: 8] */
+  max-width: 300px; /* [cite: 8] */
+  text-align: left; /* [cite: 8] */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.columnSecao2 h3,
+.columnSecao2 p {
+  color: var(--text-card-elements);
 }
 
 .imageRow img {
-  width: 100%;
-  border-radius: 8px;
-  height: 180px;
-  object-fit: cover;
+  width: 100%; /* [cite: 9] */
+  border-radius: var(--border-radius-medium); /* [cite: 9] */
+  height: 180px; /* [cite: 9] */
+  object-fit: cover; /* [cite: 9] */
 }
 
 .tituloRow h3 {
-  margin-top: 1rem;
-  font-size: 1.25rem;
+  margin-top: 1rem; /* [cite: 10] */
+  font-size: 1.25rem; /* [cite: 10] */
+  color: var(--text-headings); /* Use heading color */
 }
 
 .descriptionRow p,
 .valueRow p {
-  margin: 0.5rem 0;
+  margin: 0.5rem 0; /* [cite: 10] */
+  color: var(--text-secondary); /* Use secondary text color for descriptions */
+}
+
+.valueRow p {
+  color: var(--text-primary); /* Primary color for value, or a specific accent */
+  font-weight: bold;
 }
 
 .section3 {
-  background-color: #fff;
+  background-color: var(--background-body); /* [cite: 10] */
 }
 
 .containerSecao3 {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
+  display: flex; /* [cite: 11] */
+  flex-wrap: wrap; /* [cite: 11] */
+  gap: 2rem; /* [cite: 11] */
+  align-items: center; /* [cite: 11] */
+  justify-content: center; /* [cite: 11] */
+}
+
+.textContainerSecao3 h2 {
+  color: var(--text-headings);
+}
+
+.textContainerSecao3 p {
+  color: var(--text-primary);
 }
 
 .imageContainerSecao3 img {
-  max-width: 40%;
-  border-radius: 12px;
+  max-width: 40%; /* [cite: 11] */ /* Consider using 100% within its container and controlling container width */
+  border-radius: var(--border-radius-large); /* [cite: 11] */
 }
 
 .textContainerSecao3 {
-  max-width: 500px;
+  max-width: 500px; /* [cite: 12] */
 }
 
 .section3_5 {
-  background-color: #e3f2fd;
+  background-color: var(--background-section-advantages); /* [cite: 12] */
 }
 
 .vantagensContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  display: flex; /* [cite: 13] */
+  flex-wrap: wrap; /* [cite: 13] */
+  gap: 2rem; /* [cite: 13] */
+  justify-content: center; /* [cite: 13] */
 }
 
 .vantagem {
-  background-color: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  max-width: 250px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  text-align: left;
+  background-color: var(--background-card); /* [cite: 14] */
+  border-radius: var(--border-radius-large); /* [cite: 14] */
+  padding: 1.5rem; /* [cite: 14] */
+  max-width: 250px; /* [cite: 14] */
+  box-shadow: var(--box-shadow-advantage-card); /* [cite: 14] */
+  text-align: left; /* [cite: 14] */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vantagem h3 {
+  color: var(--text-headings);
+}
+.vantagem p {
+  color: var(--text-secondary);
 }
 
 .sectionTitle {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 2rem; /* [cite: 14] */
+  margin-bottom: 2rem; /* [cite: 14] */
+  color: var(--text-headings);
 }
 
 .section4 {
-  background: linear-gradient(135deg, #0d47a1, #1976d2);
-  color: white;
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--background-section-dark-gradient-start), var(--background-section-dark-gradient-end)); /* [cite: 15] */
+  color: var(--text-on-dark-bg); /* [cite: 15] */
+  padding: 4rem 2rem; /* [cite: 15] */
 }
 
-.sectionTitleWhite {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.sectionTitleWhite { /* This class name might be misleading if text color changes based on theme */
+  font-size: 2rem; /* [cite: 15] */
+  margin-bottom: 2rem; /* [cite: 15] */
+  color: var(--text-on-dark-bg); /* Will remain white/light on this gradient */
 }
 
 .depoimentosContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+  display: flex; /* [cite: 16] */
+  flex-wrap: wrap; /* [cite: 16] */
+  gap: 2rem; /* [cite: 16] */
+  justify-content: center; /* [cite: 16] */
 }
 
 .depoimento {
-  background-color: white;
-  color: #333;
-  border-radius: 12px;
-  padding: 1.5rem;
-  max-width: 280px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background-color: var(--background-card); /* [cite: 17] */
+  color: var(--text-card-elements); /* This was #333, now uses variable */ /* [cite: 17] */
+  border-radius: var(--border-radius-large); /* [cite: 17] */
+  padding: 1.5rem; /* [cite: 17] */
+  max-width: 280px; /* [cite: 17] */
+  box-shadow: var(--box-shadow-card); /* [cite: 17] */
+  text-align: center; /* [cite: 17] */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.depoimento h3 {
+   color: var(--text-headings); /* Use heading color for names */
+}
+
+.depoimento p {
+  color: var(--text-secondary); /* Testimonial text */
 }
 
 .depoimentoImagem {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
+  width: 80px; /* [cite: 18] */
+  height: 80px; /* [cite: 18] */
+  border-radius: 50%; /* [cite: 18] */
+  object-fit: cover; /* [cite: 18] */
+  margin-bottom: 1rem; /* [cite: 18] */
 }
 
 .estrelas {
-  color: #ffb300;
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
+  color: var(--star-color); /* [cite: 18] */
+  font-size: 1.2rem; /* [cite: 18] */
+  margin-top: 0.5rem; /* [cite: 18] */
 }
