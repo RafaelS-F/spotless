@@ -9,14 +9,12 @@ export default function Register() {
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6 col-lg-5 text-center text-md-start">
             <div className="mb-4">
-              <img
-                src="/logo1.png"
-                alt="Logo"
-                className="mb-4"
-                style={{ maxWidth: "120px", height: "auto" }}
-              />
-              <h3 className="fw-bold mb-3">Crie sua conta</h3>
-              <p className="text-muted">Registre-se para começar.</p>
+              <h3 className="fw-bold mb-3" style={{ color: '#000000' }}>
+                Crie sua conta
+              </h3>
+              <p className={`${styles.textMuted} mode-aware-subtitle`}>
+                Registre-se para começar.
+              </p>
             </div>
 
             <form className={styles.formContainer}>

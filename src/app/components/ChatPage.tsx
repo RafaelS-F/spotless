@@ -1,4 +1,5 @@
 // src/components/ChatPage.tsx
+
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -22,7 +23,7 @@ const initialMessages: Message[] = [
   { id: 4, text: 'Perfeito, temos disponibilidade às 9h na sexta. Posso confirmar?', sender: 'contractor', timestamp: '10:33' },
   { id: 5, text: 'Sim, pode confirmar!', sender: 'user', timestamp: '10:34' },
   { id: 6, text: 'Ótimo! Agendamento confirmado para sexta às 9h. Algo mais?', sender: 'contractor', timestamp: '10:35' },
-   { id: 7, text: 'Não, obrigado!', sender: 'user', timestamp: '10:36' },
+  { id: 7, text: 'Não, obrigado!', sender: 'user', timestamp: '10:36' },
 ];
 
 // URLs de placeholders para avatares
@@ -65,15 +66,14 @@ export default function ChatPage() {
 
     // Simular resposta do contratado após um tempo (para demonstração)
     setTimeout(() => {
-        const replyMessage: Message = {
-            id: messages.length + 2,
-            text: "Recebido! Verificarei e retorno em breve.",
-            sender: 'contractor',
-            timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-        };
-        setMessages(prevMessages => [...prevMessages, replyMessage]);
+      const replyMessage: Message = {
+        id: messages.length + 2,
+        text: "Recebido! Verificarei e retorno em breve.",
+        sender: 'contractor',
+        timestamp: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      };
+      setMessages(prevMessages => [...prevMessages, replyMessage]);
     }, 1500);
-
   };
 
   return (
@@ -115,14 +115,18 @@ export default function ChatPage() {
           className={styles.inputField}
         />
         <button type="submit" className={styles.sendButton}>
-          Enviar
-          {/* Ícone de envio (opcional) */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-            <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+          {/* Ícone de avião de papel */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            width="18"
+            height="18"
+            fill="currentColor"
+          >
+            <path d="M476.6 3.4c-6.8-2.8-14.4 0-18.6 6.8L17.9 495.3c-4.4 7.4-2 17.2 5.4 21.5 2.4 1.4 5.1 2.1 7.8 2.1 5.6 0 11-3.1 13.7-8.3l101.8-207.2 207.2-101.8c5.2-2.7 8.3-8.1 8.3-13.7 0-2.7-.7-5.4-2.1-7.8z" />
           </svg>
         </button>
       </form>
     </div>
   );
 }
-

@@ -1,3 +1,6 @@
+/* src/app/login/Login.module.css */
+
+/* CONTÊINER COM IMAGEM DE FUNDO VERTICAL */
 .bgImageVertical {
   position: relative;
   overflow: hidden;
@@ -6,63 +9,106 @@
   background-size: auto 100%;
 }
 
+/* Altura completa */
 .hCustom2 {
   height: 100%;
 }
 
+/* Formulário */
 .formContainer {
+  color: #212529  ;
   width: 23rem;
+  background-color: rgba(255, 255, 255, 0.9); /* leve fundo claro para legibilidade */
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Espaçamento interno entre campos */
 .formOutline {
   margin-bottom: 1rem;
 }
 
+/* Inputs grandes */
 .formControlLg {
   width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #ced4da;
+  background-color: #ffffff;
+  color: #212529;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
+/* Labels acima dos inputs */
 .formLabel {
-  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.25rem;
   color: #495057;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
+/* Botão Informar (Submit) */
 .btnInfo {
   width: 100%;
   padding: 1rem;
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btnInfo:hover {
-  background-color: #138496;
+  background-color: #0056b3;
 }
 
+/* Texto secundário */
 .textMuted {
   color: #6c757d;
+  transition: color 0.3s ease;
 }
 
 .textMuted:hover {
   text-decoration: underline;
 }
 
+/* Links de informação */
 .linkInfo {
   color: #17a2b8;
+  transition: color 0.3s ease;
 }
 
 .linkInfo:hover {
   text-decoration: underline;
 }
 
+/* Coluna da imagem (aparece em telas >= 768px) */
 .colImage {
   display: none;
+}
+/* Título “Crie sua conta” */
+.modeAwareTitle {
+  color: #000000; /* Light Mode */
+  transition: color 0.3s ease;
+}
+
+/* Dark Mode: altera para branco quando [data-theme="dark"] estiver ativo */
+[data-theme="dark"] .modeAwareTitle {
+  color: #ffffff !important;
+}
+
+/* Subtítulo “Registre-se para começar.” */
+.modeAwareSubtitle {
+  color: #6c757d; /* Light Mode (equivalente ao textMuted) */
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .modeAwareSubtitle {
+  color: #ffffff !important;
 }
 
 @media (min-width: 768px) {

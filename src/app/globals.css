@@ -40,6 +40,9 @@
   /* Bootstrap variable overrides (optional, if you want to theme Bootstrap components too) */
   /* --bs-body-bg: var(--background-body); */
   /* --bs-body-color: var(--text-primary); */
+
+  --secondary-orange:var(--background-button-primary)
+  --primary-blue:var(--background-footer)
 }
 
 [data-theme="dark"] {

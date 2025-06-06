@@ -9,14 +9,15 @@ export default function Login() {
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6 col-lg-5 text-center text-md-start">
             <div className="mb-4">
-              <img
-                src="/logo1.png"
-                alt="Logo"
-                className="mb-4"
-                style={{ maxWidth: "120px", height: "auto" }}
-              />
-              <h3 className="fw-bold mb-3">Bem-vindo de volta!</h3>
-              <p className="text-muted">Faça login para continuar.</p>
+              {/* Removido o style inline e adicionado a classe modeAwareTitle */}
+              <h3 className={`fw-bold mb-3 ${styles.modeAwareTitle}`}>
+                Crie sua conta
+              </h3>
+
+              {/* Substituído mode-aware-subtitle por styles.modeAwareSubtitle */}
+              <p className={`${styles.modeAwareSubtitle}`}>
+                Registre-se para começar.
+              </p>
             </div>
 
             <form className={styles.formContainer}>
