@@ -1,6 +1,54 @@
+// src/app/registro/page.tsx
+'use client'; // Converte para Client Component
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation'; // Hook para redirecionamento
 import styles from "@/app/login/Login.module.css";
 
 export default function Register() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const router = useRouter(); // Instancia o router
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    if (password !== confirmPassword) {
+      setError('As senhas não coincidem.');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Algo deu errado.');
+      }
+
+      setSuccess('Cadastro realizado com sucesso! Redirecionando para o login...');
+      setTimeout(() => {
+        router.push('/login'); // Redireciona para a página de login
+      }, 2000);
+
+    } catch (err: any) {
+      setError(err.message);
+    }
+  };
+
   return (
     <section
       className={`${styles.bgImageVertical} vh-100 d-flex align-items-center justify-content-center`}
@@ -17,7 +65,10 @@ export default function Register() {
               </p>
             </div>
 
-            <form className={styles.formContainer}>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
+              {error && <div className="alert alert-danger">{error}</div>}
+              {success && <div className="alert alert-success">{success}</div>}
+
               <div className={styles.formOutline}>
                 <label className={styles.formLabel} htmlFor="name">
                   Nome
@@ -27,6 +78,9 @@ export default function Register() {
                   id="name"
                   className={styles.formControlLg}
                   placeholder="Digite seu nome completo"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
 
@@ -39,6 +93,9 @@ export default function Register() {
                   id="email"
                   className={styles.formControlLg}
                   placeholder="Digite seu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
 
@@ -51,6 +108,9 @@ export default function Register() {
                   id="password"
                   className={styles.formControlLg}
                   placeholder="Crie uma senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
 
@@ -63,6 +123,9 @@ export default function Register() {
                   id="confirmPassword"
                   className={styles.formControlLg}
                   placeholder="Repita sua senha"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
                 />
               </div>
 
@@ -79,7 +142,7 @@ export default function Register() {
             </form>
           </div>
 
-          <div className={`col-md-6 d-none d-md-block ${styles.colImage}`}>  
+          <div className={`col-md-6 d-none d-md-block ${styles.colImage}`}>
             <img
               src="/Login.jpg"
               alt="Imagem de registro"

@@ -1,20 +1,16 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// CORREÇÃO: Trocando a fonte para 'Inter', que é uma Google Font válida
+import { Inter } from "next/font/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DarkModePopup from "@/app/components/DarkModePopup";
 import Header from '@/app/components/Header';
 import Footer from '@/app/components/Footer';
+import { AuthProvider } from '@/context/AuthContext';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Configura a fonte 'Inter' para ser otimizada pelo Next.js
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Spotless Limpeza",
@@ -28,13 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        <main>
-          {children}
-        </main>
-        <Footer />
-        <DarkModePopup />
+      {/* CORREÇÃO: Aplicando a classe da fonte 'Inter' ao corpo da página */}
+      <body className={inter.className}>
+        <AuthProvider>
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Footer />
+          <DarkModePopup />
+        </AuthProvider>
       </body>
     </html>
   );

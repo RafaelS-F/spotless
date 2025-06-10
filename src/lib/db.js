@@ -1,4 +1,22 @@
-import { sql } from 'mssql';
+// src/lib/db.js
+
+import sql from 'mssql';
+
+const requiredEnv = [
+  'AZURE_SQL_SERVER',
+  'AZURE_SQL_DATABASE',
+  'AZURE_SQL_USER',
+  'AZURE_SQL_PASSWORD'
+];
+
+for (const name of requiredEnv) {
+  if (!process.env[name]) {
+    throw new Error(
+      `Variável de ambiente "${name}" não definida. ` +
+      `Verifique seu .env.local e reinicie o servidor.`
+    );
+  }
+}
 
 const config = {
   server: process.env.AZURE_SQL_SERVER,
@@ -10,8 +28,8 @@ const config = {
     trustServerCertificate: false
   },
   pool: {
-    max: parseInt(process.env.AZURE_SQL_POOL_MAX),
-    min: parseInt(process.env.AZURE_SQL_POOL_MIN),
+    max: parseInt(process.env.AZURE_SQL_POOL_MAX || '10', 10),
+    min: parseInt(process.env.AZURE_SQL_POOL_MIN || '0', 10),
     idleTimeoutMillis: 30000
   }
 };
@@ -20,7 +38,6 @@ let pool;
 
 export async function connectToDatabase() {
   if (pool) return pool;
-  
   try {
     pool = await sql.connect(config);
     console.log('Conectado ao Azure SQL');

@@ -1,6 +1,46 @@
+// src/app/login/page.tsx
+'use client'; 
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from "@/app/login/Login.module.css";
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Falha no login.');
+      }
+      
+      // On successful login, redirect to the user's page
+      router.push('/usuario');
+      // CORREÇÃO: Força uma atualização dos componentes do servidor,
+      // fazendo com que o Header reavalie o estado de login.
+      router.refresh();
+
+    } catch (err: any) {
+      setError(err.message);
+    }
+  };
+
   return (
     <section
       className={`${styles.bgImageVertical} vh-100 d-flex align-items-center justify-content-center`}
@@ -9,18 +49,17 @@ export default function Login() {
         <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6 col-lg-5 text-center text-md-start">
             <div className="mb-4">
-              {/* Removido o style inline e adicionado a classe modeAwareTitle */}
               <h3 className={`fw-bold mb-3 ${styles.modeAwareTitle}`}>
-                Crie sua conta
+                Acesse sua conta
               </h3>
-
-              {/* Substituído mode-aware-subtitle por styles.modeAwareSubtitle */}
               <p className={`${styles.modeAwareSubtitle}`}>
-                Registre-se para começar.
+                Bem-vindo de volta!
               </p>
             </div>
 
-            <form className={styles.formContainer}>
+            <form className={styles.formContainer} onSubmit={handleSubmit}>
+              {error && <div className="alert alert-danger">{error}</div>}
+              
               <div className={styles.formOutline}>
                 <label className={styles.formLabel} htmlFor="email">
                   Email
@@ -30,6 +69,9 @@ export default function Login() {
                   id="email"
                   className={styles.formControlLg}
                   placeholder="Digite seu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
 
@@ -42,6 +84,9 @@ export default function Login() {
                   id="password"
                   className={styles.formControlLg}
                   placeholder="Digite sua senha"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
 
@@ -57,7 +102,7 @@ export default function Login() {
 
               <p className="mt-3 text-center">
                 Ainda não tem uma conta?{" "}
-                <a href="#" className={styles.linkInfo}>
+                <a href="/registro" className={styles.linkInfo}>
                   Cadastre-se
                 </a>
               </p>
