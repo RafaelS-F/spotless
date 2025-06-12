@@ -16,8 +16,8 @@
   --background-footer: #1976d2;
   --text-header: #333333; /* Cor original do texto do seu header no tema claro */
 
-  --text-primary: #ffffff; /* Cor de texto padrão */
-  --text-secondary: #6c757d; /* Cinza médio para texto secundário */
+  --text-primary: #333333; /* Cor de texto padrão */
+  --text-secondary: #6c757d;/* Cinza médio para texto secundário */
   --text-on-dark-bg: #ffffff;
   --text-on-primary-button: #ffffff;
   --text-link: #00376b;

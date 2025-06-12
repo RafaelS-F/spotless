@@ -1,298 +1,265 @@
 /* src/app/usuario/UserProfilePage.module.css */
-/* As variáveis CSS (--primary-blue, --secondary-orange, etc.)
-   devem ser definidas em um arquivo CSS global (ex: src/app/globals.css) */
 
-   .profileContainer {
-    max-width: 900px; /* Largura máxima do container */
-    margin: 40px auto; /* Centraliza e adiciona margem */
-    padding: 30px;
-    background-color: var(--background-color); /* Usa variável global */
-    border-radius: 12px; /* Bordas arredondadas */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    font-family: 'Inter', sans-serif; /* Fonte moderna - certifique-se de importar a fonte no seu projeto */
-  }
-  
-  .title {
-    color: var(--primary-blue); /* Usa variável global */
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2rem; /* Tamanho maior para o título */
-  }
-  
-  /* Estilos das Abas */
-  .tabs {
-    display: flex;
-    justify-content: center; /* Centraliza os botões das abas */
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--border-color); /* Usa variável global */
-  }
-  
-  .tabButton {
-    padding: 12px 25px; /* Mais padding para melhor toque */
-    cursor: pointer;
-    background-color: transparent; /* Fundo transparente por padrão */
-    border: none;
-    border-bottom: 3px solid transparent; /* Borda inferior para indicar ativação */
-    margin: 0 5px -2px 5px; /* Leve sobreposição com a borda inferior do container */
-    font-size: 1rem;
-    font-weight: 600; /* Texto um pouco mais forte */
-    color: var(--grey-text); /* Usa variável global */
-    transition: all 0.3s ease; /* Transição suave */
-    border-radius: 6px 6px 0 0; /* Arredondamento apenas no topo */
-  }
-  
-  .tabButton:hover {
-    background-color: var(--light-blue); /* Usa variável global */
-    color: var(--primary-blue); /* Usa variável global */
-  }
-  
-  .tabButton.active {
-    color: var(--primary-blue); /* Usa variável global */
-    border-bottom-color: var(--primary-blue); /* Usa variável global */
-    font-weight: 700;
-  }
-  
-  /* Conteúdo das Abas */
-  .tabContent {
-    padding: 20px 0; /* Espaçamento vertical */
-    animation: fadeIn 0.5s ease; /* Animação de entrada */
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Aba de Serviços */
-  .serviceList h2,
-  .dataForm h2,
-  .reviewList h2 {
-    color: var(--dark-text); /* Usa variável global */
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid var(--border-color); /* Usa variável global */
-    padding-bottom: 10px;
-  }
-  
-  .serviceItem {
-    background-color: var(--card-background); /* Usa variável global */
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid var(--border-color); /* Usa variável global */
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .serviceItem:hover {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-  
-  .serviceItem p {
-    margin: 5px 0;
-    color: var(--grey-text); /* Usa variável global */
-  }
-  
-  .serviceItem p strong {
-    color: var(--dark-text); /* Usa variável global */
-    min-width: 80px; /* Alinha os valores */
-    display: inline-block;
-  }
-  
-  .status {
-    padding: 3px 8px;
-    border-radius: 4px;
-    color: var(--light-text); /* Usa variável global */
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-  
-  /* Estilos específicos para status usando classes CSS Modules */
-  .agendado { /* Classe para status 'Agendado' */
-    background-color: var(--warning-color); /* Usa variável global */
-    color: var(--dark-text); /* Melhor contraste com amarelo */
-  }
-  
-  .concluído { /* Classe para status 'Concluído' */
-    background-color: var(--success-color); /* Usa variável global */
-  }
-  
-  /* Aba de Dados (Formulário) */
-  .dataForm {
-    background-color: var(--card-background); /* Usa variável global */
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color); /* Usa variável global */
-  }
-  
-  .formField {
-    margin-bottom: 20px;
-  }
-  
-  .formField label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--dark-text); /* Usa variável global */
-  }
-  
-  .formField input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color); /* Usa variável global */
-    border-radius: 6px;
-    font-size: 1rem;
-    box-sizing: border-box; /* Garante que padding não aumente a largura */
-    transition: border-color 0.3s ease;
-  }
-  
-  .formField input:focus {
-    outline: none;
-    border-color: var(--primary-blue); /* Usa variável global */
-    box-shadow: 0 0 0 2px var(--light-blue); /* Usa variável global */
-  }
-  
-  .readOnly { /* Classe para inputs não editáveis */
-    background-color: #eee !important; /* Fundo cinza para campos não editáveis */
-    cursor: default !important;
-    border-color: #ddd !important; /* Borda mais clara */
-  }
-  
-  .editButton {
-    background-color: var(--secondary-orange); /* Usa variável global */
-    color: var(--light-text); /* Usa variável global */
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    display: block; /* Faz ocupar a largura disponível (opcional) */
-    margin-top: 10px; /* Espaço acima do botão */
-    width: auto; /* Ou '100%' se quiser largura total */
-  }
-  
-  .editButton:hover {
-    background-color: #e66a00; /* Laranja mais escuro no hover */
-  }
-  
-  .editButton:active {
-      transform: scale(0.98); /* Efeito de clique */
-  }
-  
-  /* Aba de Avaliações */
-  .reviewList {
-    display: grid; /* Usa grid para layout dos cards */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
-    gap: 20px; /* Espaçamento entre cards */
-  }
-  
-  .reviewCard {
-    background-color: var(--card-background); /* Usa variável global */
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color); /* Usa variável global */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .reviewCard:hover {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .reviewHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .reviewHeader strong {
-    color: var(--primary-blue); /* Usa variável global */
-    font-size: 1.1rem;
-  }
-  
-  .rating {
-    color: var(--warning-color); /* Usa variável global */
-    font-size: 1.1rem;
-  }
-  
-  .reviewCard p {
-    color: var(--grey-text); /* Usa variável global */
-    line-height: 1.5;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .profileContainer {
-      margin: 20px;
-      padding: 20px;
-    }
-  
-    .tabs {
-      flex-wrap: wrap;
-       justify-content: flex-start;
-    }
-  
-    .tabButton {
-      padding: 10px 15px;
-      font-size: 0.9rem;
-      flex-grow: 1;
-      text-align: center;
-      margin: 0 2px -2px 2px;
-    }
-  
-    .title {
-      font-size: 1.8rem;
-    }
-  
-    .serviceList h2,
-    .dataForm h2,
-    .reviewList h2 {
-      font-size: 1.3rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-     .profileContainer {
-      margin: 10px;
-      padding: 15px;
-    }
-  
-    .title {
-      font-size: 1.5rem;
-    }
-  
-    .tabs {
-       border-bottom: none;
-    }
-  
-    .tabButton {
-        border-radius: 6px;
-        margin-bottom: 5px;
-        border-bottom: none;
-    }
-  
-    .tabButton.active {
-        background-color: var(--primary-blue); /* Usa variável global */
-        color: var(--light-text); /* Usa variável global */
-    }
-     .tabButton:hover {
-        background-color: var(--light-blue); /* Usa variável global */
-        color: var(--primary-blue); /* Usa variável global */
-    }
-    .tabButton.active:hover {
-         background-color: var(--primary-blue); /* Usa variável global */
-         color: var(--light-text); /* Usa variável global */
-    }
-  
-    .reviewList {
-      grid-template-columns: 1fr;
-    }
-  
-    .editButton {
-        width: 100%;
-    }
-  }
-  
-  
+/* --- Variáveis de Cor Locais --- */
+.profileContainer {
+  --profile-primary-blue: #087cfc;
+  --profile-accent-orange: #ff6f00;
+  --profile-page-bg: #f0f4f8;
+  --profile-card-bg: #ffffff;
+  --profile-text-dark: #19191a;
+  --profile-text-secondary: #6c757d;
+  --profile-border-color: #e8e8e8;
+  --profile-success-color: #28a745;
+  --profile-warning-color: #ffc107;
+}
+
+/* --- Container Principal e Título --- */
+.profileContainer {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px 30px;
+  background-color: var(--profile-card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  color: var(--profile-text-dark);
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* --- Navegação por Abas --- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--profile-border-color);
+  margin-bottom: 30px;
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* Alinha com a borda do container */
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--profile-text-secondary);
+  transition: all 0.3s ease;
+}
+
+.tabButton:hover {
+  background-color: var(--profile-page-bg);
+  color: var(--profile-primary-blue);
+}
+
+.tabButton.active {
+  color: var(--profile-primary-blue);
+  border-bottom-color: var(--profile-primary-blue);
+  font-weight: 600;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Conteúdo das Abas --- */
+.tabContent {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* --- Aba "Meus Dados" (Formulário) --- */
+.dataForm {
+  padding: 10px;
+}
+
+.formField {
+  margin-bottom: 20px;
+}
+
+.formField label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--profile-text-dark);
+  font-size: 0.9rem;
+}
+
+.formField input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--profile-border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  color: var(--profile-text-dark);
+  transition: all 0.2s ease;
+}
+
+.formField input:focus {
+  outline: none;
+  border-color: var(--profile-primary-blue);
+  box-shadow: 0 0 0 3px rgba(8, 124, 252, 0.1);
+  background-color: var(--profile-card-bg);
+}
+
+.readOnly {
+  background-color: #f1f1f1 !important;
+  cursor: not-allowed;
+}
+
+.actionButton {
+  background-color: var(--profile-primary-blue);
+  color: #ffffff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.actionButton:hover {
+  background-color: #0056b3; /* Azul mais escuro */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(8, 124, 252, 0.2);
+}
+
+/* --- Aba "Serviços" --- */
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.serviceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--profile-border-color);
+  transition: all 0.3s ease;
+}
+
+.serviceItem:hover {
+  border-color: var(--profile-primary-blue);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.serviceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.serviceType {
+  font-weight: 600;
+  color: var(--profile-text-dark);
+}
+
+.serviceDate {
+  font-size: 0.9rem;
+  color: var(--profile-text-secondary);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.agendado {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.concluído {
+  background-color: #e8f5e9;
+  color: var(--profile-success-color);
+}
+
+/* --- Aba "Avaliações" --- */
+.reviewList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.reviewCard {
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.reviewCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-color: var(--profile-border-color);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.reviewName {
+  font-weight: 600;
+  color: var(--profile-text-dark);
+}
+
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+.starFilled {
+  color: var(--profile-warning-color);
+  fill: var(--profile-warning-color);
+}
+
+.starEmpty {
+  color: #dcdcdc;
+}
+
+.reviewText {
+  color: var(--profile-text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .profileContainer { margin: 20px; padding: 20px; }
+  .tabs { justify-content: space-around; }
+  .tabButton { padding: 12px 10px; font-size: 0.9rem; }
+}
