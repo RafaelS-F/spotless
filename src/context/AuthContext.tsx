@@ -2,16 +2,16 @@
 'use client';
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-// CORREÇÃO: Importando o usePathname para detectar mudanças de rota
 import { usePathname } from 'next/navigation';
 
-// Função para pegar o cookie do navegador
-const getCookie = (name: string): string | undefined => {
+// Helper to read a cookie value in the browser
+function getCookie(name: string): string | undefined {
   if (typeof document === 'undefined') return undefined;
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(';').shift();
-};
+  const match = document.cookie.match(new RegExp(
+    `(?:^|; )${name.replace(/([.$?*|{}()[\]\\\/\+^])/g, '\\$1')}=([^;]*)`
+  ));
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -23,28 +23,27 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // CORREÇÃO: Usando o hook para saber a URL atual
   const pathname = usePathname();
 
-  // CORREÇÃO: Este useEffect agora roda na primeira vez e sempre que a URL muda.
-  // Isso garante que o estado de login seja reavaliado em cada navegação.
   useEffect(() => {
     const token = getCookie('sessionToken');
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
+    setIsAuthenticated(!!token);
+  }, [pathname]);
+
+  function login() {
+    setIsAuthenticated(true);
+  }
+
+  async function logout() {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (err) {
+      console.error('Logout error:', err);
+    } finally {
+      // Clear client-side state
       setIsAuthenticated(false);
     }
-  }, [pathname]); // A dependência [pathname] é a chave da correção
-
-  const login = () => {
-    setIsAuthenticated(true);
-  };
-
-  const logout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    setIsAuthenticated(false);
-  };
+  }
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
@@ -55,8 +54,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+  if (!context) {
+    throw new Error('useAuth must be used inside an AuthProvider');
   }
   return context;
 }

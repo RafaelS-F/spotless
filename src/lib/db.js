@@ -1,5 +1,4 @@
 // src/lib/db.js
-
 import sql from 'mssql';
 
 const requiredEnv = [
@@ -9,15 +8,16 @@ const requiredEnv = [
   'AZURE_SQL_PASSWORD'
 ];
 
+// Validação das variáveis de ambiente
 for (const name of requiredEnv) {
   if (!process.env[name]) {
     throw new Error(
-      `Variável de ambiente "${name}" não definida. ` +
-      `Verifique seu .env.local e reinicie o servidor.`
+      `Variável de ambiente "${name}" não definida. Verifique as configurações no Netlify.`
     );
   }
 }
 
+// Configuração da conexão com o SQL Server
 const config = {
   server: process.env.AZURE_SQL_SERVER,
   database: process.env.AZURE_SQL_DATABASE,
@@ -34,16 +34,18 @@ const config = {
   }
 };
 
+// Instância de pool global para evitar múltiplas conexões em ambientes serverless
 let pool;
 
 export async function connectToDatabase() {
   if (pool) return pool;
+
   try {
     pool = await sql.connect(config);
-    console.log('Conectado ao Azure SQL');
+    console.log('✅ Conectado ao banco de dados SQL Server com sucesso.');
     return pool;
-  } catch (err) {
-    console.error('Erro de conexão:', err);
-    throw err;
+  } catch (error) {
+    console.error('❌ Erro ao conectar no banco de dados:', error);
+    throw new Error(`Erro de conexão com o banco de dados: ${error.message}`);
   }
 }
