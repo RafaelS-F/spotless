@@ -1,4 +1,5 @@
 // src/app/api/auth/logout/route.js
+export const runtime = 'nodejs';
 import { serialize } from 'cookie';
 import { NextResponse } from 'next/server';
 
