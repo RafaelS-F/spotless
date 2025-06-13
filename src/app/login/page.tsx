@@ -30,10 +30,10 @@ export default function Login() {
         throw new Error(data.error || 'Falha no login.');
       }
       
-      // On successful login, redirect to the user's page
+    
       router.push('/usuario');
-      // CORREÇÃO: Força uma atualização dos componentes do servidor,
-      // fazendo com que o Header reavalie o estado de login.
+      
+      
       router.refresh();
 
     } catch (err: any) {
