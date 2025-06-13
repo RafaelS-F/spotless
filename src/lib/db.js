@@ -1,4 +1,4 @@
-// Substitua o código existente por:
+
 import sql from 'mssql';
 
 const config = {
