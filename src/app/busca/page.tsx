@@ -15,7 +15,7 @@ interface Service {
   valor: number;
   localizacao: string;
   data_servico: string;
-  status: string; // Adicionando status para possível uso futuro
+  status: string;
 }
 
 const categorias = [
