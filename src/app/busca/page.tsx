@@ -1,7 +1,22 @@
+// src/app/busca/page.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../page.module.css";
+import { Clock } from "lucide-react"; // Importando ícone para status
+
+// Interface para os serviços
+interface Service {
+  id_servico: number;
+  id_usuario: number;
+  usuario: string;
+  titulo: string;
+  descricao: string;
+  valor: number;
+  localizacao: string;
+  data_servico: string;
+  status: string;
+}
 
 const categorias = [
   "Limpeza Residencial",
@@ -9,30 +24,52 @@ const categorias = [
   "Limpeza Comercial",
 ];
 
-const resultadosMock = [
-  {
-    id: 1,
-    usuario: "Carlos Souza",
-    titulo: "Preciso de limpeza residencial em apartamento pequeno",
-    descricao:
-      "Preciso de alguém para limpar meu apartamento de 2 quartos. Já tenho produtos.",
-    localizacao: "Belo Horizonte - MG",
-    data: "2025-06-10",
-    preco: "R$ 90,00",
-  },
-];
-
 export default function PaginaBusca() {
   const [filtro, setFiltro] = useState("");
   const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
+  const [servicos, setServicos] = useState<Service[]>([]);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState("");
+
+  // Função para buscar serviços
+  const buscarServicos = async (termo: string) => {
+    setCarregando(true);
+    setErro("");
+    try {
+      const res = await fetch(
+        `/api/servicos/buscar?filtro=${encodeURIComponent(termo)}`
+      );
+      if (!res.ok) {
+        throw new Error("Falha ao buscar serviços");
+      }
+      const dados = await res.json();
+      setServicos(dados);
+    } catch (err) {
+      setErro("Erro ao carregar serviços. Tente novamente.");
+      console.error(err);
+    } finally {
+      setCarregando(false);
+    }
+  };
+
+  // Busca inicial ao montar o componente
+  useEffect(() => {
+    buscarServicos("");
+  }, []);
 
   const handleCategoriaClick = (cat: string) => {
     setCategoriaSelecionada(cat);
     setFiltro(cat);
+    buscarServicos(cat);
   };
 
   const realizarBusca = () => {
-    console.log("Buscando por:", filtro);
+    buscarServicos(filtro);
+  };
+
+  // Formatar data para exibição
+  const formatarData = (data: string) => {
+    return new Date(data).toLocaleDateString("pt-BR");
   };
 
   return (
@@ -122,31 +159,56 @@ export default function PaginaBusca() {
 
       {/* Resultados da busca */}
       <div className={styles.row2} style={{ marginTop: "3rem" }}>
-        {resultadosMock.map((item) => (
-          <div key={item.id} className={styles.columnSecao2}>
-            <div className={styles.tituloRow}>
-              <h3>{item.titulo}</h3>
+        {carregando ? (
+          <p>Carregando serviços...</p>
+        ) : erro ? (
+          <p className={styles.erro}>{erro}</p>
+        ) : servicos.length === 0 ? (
+          <p>Nenhum serviço encontrado.</p>
+        ) : (
+          servicos.map((servico) => (
+            <div key={servico.id_servico} className={styles.columnSecao2}>
+              <div className={styles.tituloRow}>
+                <h3>{servico.titulo}</h3>
+              </div>
+              <div className={styles.descriptionRow}>
+                <p>{servico.descricao}</p>
+              </div>
+              <div className={styles.valueRow}>
+                <p>R${servico.valor.toFixed(2)}</p>
+              </div>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+                <strong>Local:</strong> {servico.localizacao}
+              </p>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+                <strong>Data:</strong> {formatarData(servico.data_servico)}
+              </p>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
+                <strong>Solicitante:</strong> {servico.usuario}
+              </p>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  marginTop: "10px",
+                  color: "#f57f17",
+                  backgroundColor: "#fff8e1",
+                  padding: "5px 10px",
+                  borderRadius: "20px",
+                  fontSize: "0.85rem",
+                  width: "fit-content",
+                }}
+              >
+                <Clock size={16} />
+                <span>Disponível</span>
+              </div>
+              <div className={styles.buttonRow}>
+                <button className={styles.button}>Ver Detalhes</button>
+              </div>
             </div>
-            <div className={styles.descriptionRow}>
-              <p>{item.descricao}</p>
-            </div>
-            <div className={styles.valueRow}>
-              <p>{item.preco}</p>
-            </div>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-              <strong>Local:</strong> {item.localizacao}
-            </p>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-              <strong>Data desejada:</strong> {item.data}
-            </p>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-              <strong>Solicitante:</strong> {item.usuario}
-            </p>
-            <div className={styles.buttonRow}>
-              <button className={styles.button}>Ver Detalhes</button>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </section>
   );
