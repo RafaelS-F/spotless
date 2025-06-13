@@ -3,7 +3,7 @@ export const runtime = 'nodejs';
 import { connectToDatabase } from '@/lib/db';
 import { sql } from 'mssql';
 import { NextResponse } from 'next/server';
-
+export const dynamic = 'force-dynamic';
 export async function GET(request) {
   try {
     const pool = await connectToDatabase();

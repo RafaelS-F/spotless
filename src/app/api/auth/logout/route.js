@@ -2,7 +2,7 @@
 export const runtime = 'nodejs';
 import { serialize } from 'cookie';
 import { NextResponse } from 'next/server';
-
+export const dynamic = 'force-dynamic';
 export async function POST() {
   // Apaga o cookie definindo sua idade máxima como -1
   const seralized = serialize('sessionToken', '', {

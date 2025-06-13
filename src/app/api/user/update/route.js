@@ -4,7 +4,7 @@ import { connectToDatabase } from '@/lib/db';
 import sql from 'mssql';
 import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
-
+export const dynamic = 'force-dynamic';
 export async function PUT(request) {
   try {
     // 1. Verificar o token do usuário

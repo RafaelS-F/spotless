@@ -4,7 +4,7 @@ import { connectToDatabase } from '@/lib/db';
 import sql from 'mssql';
 import { NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
-
+export const dynamic = 'force-dynamic';
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET || 'fallback-secret');
 
 export async function GET(request) {

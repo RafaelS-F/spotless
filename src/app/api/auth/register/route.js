@@ -4,6 +4,7 @@ import { connectToDatabase } from '@/lib/db';
 import sql from 'mssql';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(request) {
   try {

@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 // Usando 'jose' para criar o token, para ser consistente
 import { SignJWT } from 'jose';
 import { serialize } from 'cookie';
+export const dynamic = 'force-dynamic';
 
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 dias
 
