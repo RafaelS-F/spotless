@@ -3,7 +3,7 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 
-// Função segura para SSR (não acessa document no servidor)
+
 const getCookie = (name: string): string | undefined => {
   if (typeof document === 'undefined') return undefined;
   const value = `; ${document.cookie}`;
@@ -24,7 +24,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
 
-  // Correção: Garantir que só roda no cliente
+ 
   useEffect(() => {
     setIsClient(true);
     const token = getCookie('sessionToken');
