@@ -1,17 +1,15 @@
-// src/context/AuthContext.tsx
 'use client';
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 
-// Helper to read a cookie value in the browser
-function getCookie(name: string): string | undefined {
+// Função segura para SSR (não acessa document no servidor)
+const getCookie = (name: string): string | undefined => {
   if (typeof document === 'undefined') return undefined;
-  const match = document.cookie.match(new RegExp(
-    `(?:^|; )${name.replace(/([.$?*|{}()[\]\\\/\+^])/g, '\\$1')}=([^;]*)`
-  ));
-  return match ? decodeURIComponent(match[1]) : undefined;
-}
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  return parts.length === 2 ? parts.pop()?.split(';').shift() : undefined;
+};
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -24,30 +22,32 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
 
+  // Correção: Garantir que só roda no cliente
   useEffect(() => {
+    setIsClient(true);
     const token = getCookie('sessionToken');
     setIsAuthenticated(!!token);
   }, [pathname]);
 
-  function login() {
-    setIsAuthenticated(true);
-  }
-
   async function logout() {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
-    } catch (err) {
-      console.error('Logout error:', err);
     } finally {
-      // Clear client-side state
       setIsAuthenticated(false);
     }
   }
 
+  const contextValue = {
+    isAuthenticated,
+    login: () => setIsAuthenticated(true),
+    logout
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
+    <AuthContext.Provider value={contextValue}>
+      {isClient ? children : null}
     </AuthContext.Provider>
   );
 }
@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used inside an AuthProvider');
+    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
   }
   return context;
 }

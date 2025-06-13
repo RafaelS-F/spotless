@@ -1,4 +1,3 @@
-// src/lib/db.js
 import sql from 'mssql';
 
 const requiredEnv = [
@@ -8,16 +7,16 @@ const requiredEnv = [
   'AZURE_SQL_PASSWORD'
 ];
 
-// Validação das variáveis de ambiente
+// Mensagem de erro corrigida para Render
 for (const name of requiredEnv) {
   if (!process.env[name]) {
     throw new Error(
-      `Variável de ambiente "${name}" não definida. Verifique as configurações no Netlify.`
+      `Variável de ambiente "${name}" não definida. ` +
+      `Verifique as configurações no Render.`
     );
   }
 }
 
-// Configuração da conexão com o SQL Server
 const config = {
   server: process.env.AZURE_SQL_SERVER,
   database: process.env.AZURE_SQL_DATABASE,
@@ -25,27 +24,60 @@ const config = {
   password: process.env.AZURE_SQL_PASSWORD,
   options: {
     encrypt: true,
-    trustServerCertificate: false
+    trustServerCertificate: false,
+    enableArithAbort: true
   },
   pool: {
-    max: parseInt(process.env.AZURE_SQL_POOL_MAX || '10', 10),
-    min: parseInt(process.env.AZURE_SQL_POOL_MIN || '0', 10),
+    max: 10,
+    min: 0,
     idleTimeoutMillis: 30000
   }
 };
 
-// Instância de pool global para evitar múltiplas conexões em ambientes serverless
+// Gerenciamento de conexão otimizado para serverless
 let pool;
+let connectionAttempts = 0;
 
 export async function connectToDatabase() {
-  if (pool) return pool;
-
+  if (pool && pool.connected) return pool;
+  
   try {
-    pool = await sql.connect(config);
-    console.log('✅ Conectado ao banco de dados SQL Server com sucesso.');
+    // Limitar tentativas de reconexão
+    if (connectionAttempts > 2) {
+      throw new Error('Máximo de tentativas de conexão excedido');
+    }
+    
+    connectionAttempts++;
+    pool = new sql.ConnectionPool(config);
+    await pool.connect();
+    console.log('✅ Conexão com SQL estabelecida');
+    connectionAttempts = 0; // Resetar contador após sucesso
     return pool;
   } catch (error) {
-    console.error('❌ Erro ao conectar no banco de dados:', error);
-    throw new Error(`Erro de conexão com o banco de dados: ${error.message}`);
+    console.error('❌ Erro de conexão:', error);
+    
+    // Fechar pool em caso de erro
+    if (pool) {
+      try {
+        await pool.close();
+      } catch (e) {
+        console.error('Erro ao fechar pool:', e);
+      }
+      pool = null;
+    }
+    
+    throw new Error(`Falha na conexão com o banco: ${error.message}`);
   }
 }
+
+// Gerenciar fechamento de conexão
+process.on('SIGTERM', async () => {
+  if (pool) {
+    try {
+      await pool.close();
+      console.log('Pool de conexão fechado');
+    } catch (error) {
+      console.error('Erro ao fechar pool:', error);
+    }
+  }
+});
